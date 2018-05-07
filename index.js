@@ -21,4 +21,7 @@ radio.on()
 console.log('The radio is playing. Press any key to exit')
 process.stdin.setRawMode(true)
 process.stdin.resume()
-process.stdin.on('data', process.exit.bind(process, 0))
+process.stdin.on('data', () => {
+  radio.off()
+  process.exit()
+})

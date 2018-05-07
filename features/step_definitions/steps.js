@@ -17,6 +17,8 @@ const config = {
   }
 }
 
+const timeout = 10000
+
 Before(async () => {
   Object.assign(this, buildRadio(config))
 })
@@ -32,6 +34,11 @@ Given('two stations are configured:', async (dataTable) => {
   await this.radio.setStationUrls(stationUrls)
 })
 
+Given('the radio has been turned on', { timeout }, async () => {
+  await this.radio.on()
+  await this.assertCurrentlyPlaying({ expectedStationName: this.theStationName, ...this })
+})
+
 When('the radio is turned on', async () => {
   await this.radio.on()
 })
@@ -40,13 +47,21 @@ When('the station is changed', async () => {
   await this.changeStation(this)
 })
 
-Then('the station should be playing', async () => {
+When('the radio is turned off', async () => {
+  await this.radio.off()
+})
+
+Then('the station should be playing', { timeout }, async () => {
   await this.assertCurrentlyPlaying({ expectedStationName: this.theStationName, ...this })
 })
 
-Then('BBC Radio 6 Music should be playing', async () => {
+Then('BBC Radio 6 Music should be playing', { timeout }, async () => {
   const stationName = "BBC Radio 6 Music"
   await this.assertCurrentlyPlaying({ expectedStationName: stationName, ...this })
+})
+
+Then('nothing should be playing', { timeout }, async () => {
+  await this.assertCurrentlyPlaying({ expectedStationName: "nothing", ...this })
 })
 
 After(async () => {
