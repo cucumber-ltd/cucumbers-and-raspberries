@@ -1,5 +1,11 @@
 {
+  "scripts": {
+    "test": "cucumber-js"
+  },
   "dependencies": {
     "onoff": "^3.0.2"
+  },
+  "devDependencies": {
+    "cucumber": "^4.2.1"
   }
 }
