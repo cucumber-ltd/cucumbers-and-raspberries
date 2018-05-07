@@ -5,7 +5,7 @@ Feature: Playing stations
     When the radio is turned on
     Then the station should be playing
 
-  @todo
+  @wip
   Scenario: Switch between stations
     Given two stations are configured:
       | BBC Radio 4       |
