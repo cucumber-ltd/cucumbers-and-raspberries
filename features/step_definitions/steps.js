@@ -19,51 +19,51 @@ const config = {
 
 const timeout = 10000
 
-Before(async () => {
+Before(async function () {
   Object.assign(this, buildRadio(config))
 })
 
-Given('a station is configured', async () => {
+Given('a station is configured', function () {
   this.theStationName = "BBC Radio 4"
-  await this.radio.setStationUrls([stations[this.theStationName]])
+  this.radio.setStationUrls([stations[this.theStationName]])
 })
 
-Given('two stations are configured:', async (dataTable) => {
+Given('two stations are configured:', async function (dataTable) {
   const stationNames = dataTable.raw().map(row => row[0])
   const stationUrls = stationNames.map(name => stations[name])
-  await this.radio.setStationUrls(stationUrls)
+  this.radio.setStationUrls(stationUrls)
 })
 
-Given('the radio has been turned on', { timeout }, async () => {
+Given('the radio has been turned on', { timeout }, async function () {
   await this.radio.on()
   await this.assertCurrentlyPlaying({ expectedStationName: this.theStationName, ...this })
 })
 
-When('the radio is turned on', async () => {
+When('the radio is turned on', async function () {
   await this.radio.on()
 })
 
-When('the station is changed', async () => {
+When('the station is changed', async function () {
   await this.changeStation(this)
 })
 
-When('the radio is turned off', async () => {
+When('the radio is turned off', async function () {
   await this.radio.off()
 })
 
-Then('the station should be playing', { timeout }, async () => {
+Then('the station should be playing', { timeout }, async function () {
   await this.assertCurrentlyPlaying({ expectedStationName: this.theStationName, ...this })
 })
 
-Then('BBC Radio 6 Music should be playing', { timeout }, async () => {
+Then('BBC Radio 6 Music should be playing', { timeout }, async function () {
   const stationName = "BBC Radio 6 Music"
   await this.assertCurrentlyPlaying({ expectedStationName: stationName, ...this })
 })
 
-Then('nothing should be playing', { timeout }, async () => {
+Then('nothing should be playing', { timeout }, async function () {
   await this.assertCurrentlyPlaying({ expectedStationName: "nothing", ...this })
 })
 
-After(async () => {
+After(async function () {
   await this.player.stop()
 })
