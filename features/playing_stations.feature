@@ -1,6 +1,5 @@
 Feature: Playing stations
 
-  @wip
   Scenario: Play one station
     Given a station is configured
     When the radio is turned on

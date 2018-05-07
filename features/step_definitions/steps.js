@@ -1,8 +1,8 @@
 'use strict'
 
 const assert = require('assert')
-const { Before, Given, When, Then } = require('cucumber')
-const FakePlayer = require('../../lib/fake_player')
+const { Before, After, Given, When, Then } = require('cucumber')
+const buildPlayer = require('../../lib/player/build')
 
 class Radio {
   constructor({ player }) {
@@ -21,21 +21,21 @@ class Radio {
 }
 
 const buildRadio = (env) => {
-  const player = new FakePlayer()
-  const radio = new Radio({ player })
-  return { player, radio }
-}
-
-const assertCurrentlyPlaying = (expectedStationName, player) => {
-  assert.equal(player.currentStationUrl, stations[expectedStationName])
+  const config = {
+    player: {
+      type: env.player_type || 'fake_player',
+      debug: false
+    }
+  }
+  const dependencies = { ...buildPlayer(config.player) }
+  const radio = new Radio(dependencies)
+  return { radio, ...dependencies }
 }
 
 const stations = require('../../fixtures/station_urls')
 
 Before(async () => {
-  const { player, radio } = buildRadio(process.ENV)
-  this.player = player
-  this.radio = radio
+  Object.assign(this, buildRadio(process.env))
 })
 
 Given('a station is configured', async () => {
@@ -48,5 +48,9 @@ When('the radio is turned on', async () => {
 })
 
 Then('the station should be playing', async () => {
-  assertCurrentlyPlaying(this.theStationName, this.player)
+  await this.assertCurrentlyPlaying(this.theStationName, this.player)
+})
+
+After(async () => {
+  await this.player.stop()
 })
