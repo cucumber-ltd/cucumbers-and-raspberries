@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "player_type=fake_player cucumber-js -t \"not @todo\" && player_type=mpc_player cucumber-js -t \"not @todo\" && mocha"
+    "test": "player_type=fake_player cucumber-js -t \"not @todo\" && player_type=mpc_player cucumber-js -t \"not @todo\" && mocha",
+    "start": "node index.js"
   },
   "dependencies": {
     "onoff": "^3.0.2"

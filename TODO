@@ -1,4 +1,5 @@
-Second scenario
-  - step to set up multiple urls
-  - UI contract and fake and real implementation
-  - make the UI configurable in the scenarios
+Turn the radio off (for the manual script)
+Fix the bug changing stations
+Add Volume up / down buttons
+Long press to go into random mode
+Long press again to save a station
