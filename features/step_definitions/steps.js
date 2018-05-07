@@ -2,16 +2,7 @@
 
 const assert = require('assert')
 const { Before, Given, When, Then } = require('cucumber')
-
-class FakePlayer {
-  get currentStationUrl() {
-    return this._currentStationUrl
-  }
-
-  play(url) {
-    this._currentStationUrl = url
-  }
-}
+const FakePlayer = require('../../lib/fake_player')
 
 class Radio {
   constructor({ player }) {
@@ -39,10 +30,7 @@ const assertCurrentlyPlaying = (expectedStationName, player) => {
   assert.equal(player.currentStationUrl, stations[expectedStationName])
 }
 
-const stations = {
-  "BBC Radio 4": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio4fm_mf_p",
-  "BBC Radio 6 Music": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_6music_mf_p"
-}
+const stations = require('../../fixtures/station_urls')
 
 Before(async () => {
   const { player, radio } = buildRadio(process.ENV)

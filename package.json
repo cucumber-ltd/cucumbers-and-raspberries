@@ -6,6 +6,8 @@
     "onoff": "^3.0.2"
   },
   "devDependencies": {
-    "cucumber": "^4.2.1"
+    "cucumber": "^4.2.1",
+    "mocha": "^5.1.1",
+    "read": "^1.0.7"
   }
 }
