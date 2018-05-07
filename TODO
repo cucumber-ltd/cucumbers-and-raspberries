@@ -1,8 +1,4 @@
-First scenario
-  - implement MPC player class
-  - tidy up player specs to use one contract
-  - make the player configurable in the scenarios
-
 Second scenario
+  - step to set up multiple urls
   - UI contract and fake and real implementation
   - make the UI configurable in the scenarios
