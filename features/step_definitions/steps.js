@@ -6,8 +6,19 @@ const buildRadio = require('../../lib/build')
 
 const stations = require('../../fixtures/station_urls')
 
+const config = {
+  player: {
+    type: process.env.player_type || 'fake_player',
+    debug: false
+  },
+  ui: {
+    type: process.env.ui_type || 'fake_ui',
+    debug: true
+  }
+}
+
 Before(async () => {
-  Object.assign(this, buildRadio(process.env))
+  Object.assign(this, buildRadio(config))
 })
 
 Given('a station is configured', async () => {

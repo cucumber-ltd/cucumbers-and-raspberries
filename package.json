@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "player_type=fake_player cucumber-js -t \"not @todo\" && player_type=mpc_player cucumber-js -t \"not @todo\" && mocha",
+    "test": "cucumber-js && player_type=mpc_player cucumber-js && mocha lib/**/*.spec.js",
     "start": "node index.js"
   },
   "dependencies": {
