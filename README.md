@@ -31,12 +31,18 @@ Anyway, let's get set up first
 Installation
 ------------
 
+0. Clone this repo
 1. [Install node](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
 2. Install `mpd` and client:
 
-```sudo apt-get install mpd mpc`
+```
+sudo apt-get update
+sudo apt-get install mpd mpc
+```
 
-3. Start the radio
+3. [Configure audo](https://www.raspberrypi.org/documentation/configuration/audio-config.md)
+
+4. Start the radio
 ```npm start```
 
 How the app is tested
