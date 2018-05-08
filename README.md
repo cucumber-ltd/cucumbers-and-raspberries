@@ -26,6 +26,19 @@ A _User Interface_ has one responsiblity:
 
 The radio app itself sits in the middle, telling the player what to do when the user presses the button.
 
+Anyway, let's get set up first
+
+Installation
+------------
+
+1. [Install node](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
+2. Install `mpd` and client:
+
+```sudo apt-get install mpd mpc`
+
+3. Start the radio
+```npm start```
+
 How the app is tested
 ---------------------
 
