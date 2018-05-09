@@ -1,6 +1,13 @@
 {
   "scripts": {
-    "test": "cucumber-js && player_type=mpc_player cucumber-js && mocha lib/**/*.spec.js",
+    "unit": "mocha lib/**/*.spec.js --grep @slow --invert",
+    "unit-slow": "mocha lib/**/*.spec.js --grep @slow",
+    "unit-all": "npm run unit && npm run unit-slow",
+    "acceptance": "cucumber-js",
+    "acceptance-slow": "player_type=mpc_player ui_type=gpio_ui cucumber-js",
+    "acceptance-all": "npm run acceptance && npm run acceptance-slow",
+    "test": "npm run unit && npm run acceptance",
+    "test-all": "npm run unit-all && npm run acceptance-all",
     "start": "node index.js"
   },
   "dependencies": {
