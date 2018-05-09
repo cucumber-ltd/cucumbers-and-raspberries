@@ -9,7 +9,7 @@
     "acceptance-all": "npm run acceptance && npm run acceptance-slow",
     "test": "npm run unit && npm run acceptance",
     "test-all": "npm run unit-all && npm run acceptance-all",
-    "start": "node index.js"
+    "start": "node lib/start.js"
   },
   "dependencies": {
     "onoff": "^3.0.2"
