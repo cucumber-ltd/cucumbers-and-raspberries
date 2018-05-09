@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "unit": "mocha lib/**/*.spec.js --grep @slow --invert",
-    "unit-slow": "mocha lib/**/*.spec.js --grep @slow",
+    "mocha": "mocha",
+    "unit": "mocha lib/*.spec.js lib/**/*.spec.js --grep @slow --invert",
+    "unit-slow": "mocha lib/*.spec.js lib/**/*.spec.js --grep @slow",
     "unit-all": "npm run unit && npm run unit-slow",
     "acceptance": "cucumber-js",
     "acceptance-slow": "player_type=mpc_player ui_type=gpio_ui cucumber-js",
