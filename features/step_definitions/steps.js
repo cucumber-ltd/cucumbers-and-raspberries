@@ -66,4 +66,5 @@ Then('nothing should be playing', { timeout }, async function () {
 
 After(async function () {
   await this.player.stop()
+  await this.ui.stop()
 })
