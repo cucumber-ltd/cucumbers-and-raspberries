@@ -7,7 +7,7 @@
     "acceptance": "cucumber-js",
     "acceptance-slow": "player_type=mpc_player ui_type=gpio_ui cucumber-js",
     "acceptance-all": "npm run acceptance && npm run acceptance-slow",
-    "test": "npm run domain && npm run acceptance",
+    "test": "npm run test-domain && npm run acceptance",
     "test-all": "npm run test-ui && npm run test-player && npm run test-domain && npm run acceptance-all",
     "start": "node lib/start.js"
   },
