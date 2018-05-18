@@ -1,14 +1,14 @@
 {
   "scripts": {
     "mocha": "mocha",
-    "unit": "mocha lib/*.spec.js lib/**/*.spec.js --grep @slow --invert",
-    "unit-slow": "mocha lib/*.spec.js lib/**/*.spec.js --grep @slow",
-    "unit-all": "npm run unit && npm run unit-slow",
+    "test-ui": "mocha lib/ui/*.spec.js",
+    "test-player": "mocha lib/player/*.spec.js",
+    "test-domain": "mocha lib/radio.spec.js",
     "acceptance": "cucumber-js",
     "acceptance-slow": "player_type=mpc_player ui_type=gpio_ui cucumber-js",
     "acceptance-all": "npm run acceptance && npm run acceptance-slow",
-    "test": "npm run unit && npm run acceptance",
-    "test-all": "npm run unit-all && npm run acceptance-all",
+    "test": "npm run domain && npm run acceptance",
+    "test-all": "npm run test-ui && npm run test-player && npm run test-domain && npm run acceptance-all",
     "start": "node lib/start.js"
   },
   "dependencies": {
