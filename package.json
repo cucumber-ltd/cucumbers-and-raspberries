@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "cucumber": "^4.2.1",
+    "cucumber-pretty": "^1.4.3",
     "mocha": "^5.1.1",
     "read": "^1.0.7",
     "sinon": "^5.0.6"
