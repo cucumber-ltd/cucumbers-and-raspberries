@@ -1,7 +1,7 @@
 'use strict'
 
 const assert = require('assert')
-const { setDefaultTimeout, Before, After, Given, When, Then } = require('cucumber')
+const { defineParameterType, setDefaultTimeout, Before, After, Given, When, Then } = require('cucumber')
 const buildRadio = require('../../lib/build')
 
 const stations = require('../../fixtures/station_urls')
@@ -21,6 +21,11 @@ setDefaultTimeout(10 * 1000)
 
 Before(async function () {
   Object.assign(this, buildRadio(config))
+})
+
+defineParameterType({
+  name: 'stationName',
+  regexp: new RegExp(`(${Object.keys(stations).join("|")})`)
 })
 
 Given('a station is configured', function () {
@@ -55,8 +60,7 @@ Then('the station should be playing', async function () {
   await this.assertCurrentlyPlaying({ expectedStationName: this.theStationName, ...this })
 })
 
-Then('BBC Radio 6 Music should be playing', async function () {
-  const stationName = "BBC Radio 6 Music"
+Then('{stationName} should be playing', async function (stationName) {
   await this.assertCurrentlyPlaying({ expectedStationName: stationName, ...this })
 })
 
