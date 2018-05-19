@@ -6,5 +6,5 @@ The radio boots up pre-loaded with a handful of our favourite stations. Pressing
 
 The radio has two features:
 
-- [Change stations](https://app.cucumber.pro/projects/cucumbers-and-raspberries/documents/branch/master/features/change_stations.feature)
 - [Start and stop the radio](https://app.cucumber.pro/projects/cucumbers-and-raspberries/documents/branch/master/features/start_and_stop.feature)
+- [Change stations](https://app.cucumber.pro/projects/cucumbers-and-raspberries/documents/branch/master/features/change_stations.feature)
