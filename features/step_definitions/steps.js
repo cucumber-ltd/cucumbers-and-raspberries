@@ -1,7 +1,7 @@
 'use strict'
 
 const assert = require('assert')
-const { Before, After, Given, When, Then } = require('cucumber')
+const { setDefaultTimeout, Before, After, Given, When, Then } = require('cucumber')
 const buildRadio = require('../../lib/build')
 
 const stations = require('../../fixtures/station_urls')
@@ -17,7 +17,7 @@ const config = {
   }
 }
 
-const timeout = 10000
+setDefaultTimeout(10 * 1000)
 
 Before(async function () {
   Object.assign(this, buildRadio(config))
@@ -34,37 +34,37 @@ Given('two stations are configured:', async function (dataTable) {
   this.radio.setStationUrls(stationUrls)
 })
 
-Given('the radio has been turned on', { timeout }, async function () {
-  await this.radio.on()
+Given('the radio has been turned on', async function () {
+  this.radio.on()
   await this.assertCurrentlyPlaying({ expectedStationName: this.theStationName, ...this })
 })
 
-When('the radio is turned on', async function () {
-  await this.radio.on()
+When('the radio is turned on', function () {
+  this.radio.on()
 })
 
-When('the station is changed', async function () {
-  await this.changeStation(this)
+When('the station is changed', function () {
+  this.changeStation(this)
 })
 
-When('the radio is turned off', async function () {
-  await this.radio.off()
+When('the radio is turned off', function () {
+  this.radio.off()
 })
 
-Then('the station should be playing', { timeout }, async function () {
+Then('the station should be playing', async function () {
   await this.assertCurrentlyPlaying({ expectedStationName: this.theStationName, ...this })
 })
 
-Then('BBC Radio 6 Music should be playing', { timeout }, async function () {
+Then('BBC Radio 6 Music should be playing', async function () {
   const stationName = "BBC Radio 6 Music"
   await this.assertCurrentlyPlaying({ expectedStationName: stationName, ...this })
 })
 
-Then('nothing should be playing', { timeout }, async function () {
+Then('nothing should be playing', async function () {
   await this.assertCurrentlyPlaying({ expectedStationName: "nothing", ...this })
 })
 
 After(async function () {
-  await this.player.stop()
-  await this.ui.stop()
+  this.player.stop()
+  this.ui.stop()
 })
