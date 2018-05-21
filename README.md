@@ -10,54 +10,6 @@ The radio boots up pre-loaded with a handful of our favourite stations. Pressing
 
 Now it turns out the code for this radio is quite interesting, if we use it as an excuse to play with the [ports and adapters](http://alistair.cockburn.us/Hexagonal+architecture) pattern for structuring your application.
 
-The code for the radio has two ports:
-
-- a _Player_
-- a _User Interface_
-
-A _Player_ has two responsiblities:
-
-- play a station URL
-- stop playing anything
-
-A _User Interface_ has one responsiblity:
-
-- tell the radio that the user wants to change station
-
-The radio app itself sits in the middle, telling the player what to do when the user presses the button.
-
-Anyway, let's get set up first
-
-Installation
-------------
-
-0. Clone this repo
-1. [Install node](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
-2. Install `mpd` and client:
-
-```
-sudo apt-get update
-sudo apt-get install mpd mpc
-```
-
-3. [Configure audo](https://www.raspberrypi.org/documentation/configuration/audio-config.md)
-
-4. Start the radio
-```npm start```
-
-How the app is tested
----------------------
-
-We start on the outside with a few [Cucumber Scenarios](./features/playing_stations.feature)
-
-You can run these like this:
-
-`yarn run cucumber-js`
-
-Then each of the adapters is tested through a contract. You can run all the contract tests with:
-
-`yarn mocha lib/**/*.spec.js`
-
-You'll notice that some of these tests involve manual intervention. Why is that?
+We have a [training workbook](https://docs.google.com/document/d/1JbmuuHuktgHBQFnDzmxEVkCqI4PEZYJaNfPBPc6QM8Q/edit?usp=sharing) that we use for running a workshop with this code and a room full of Raspberry Pis. [contact us](mailto:sales@cucumber.io) if you'd like us to run a workshop at your company.
 
 (c) Cucumber Limited
