@@ -1,8 +1,8 @@
 {
   "scripts": {
     "mocha": "mocha",
-    "test-ui": "mocha lib/ui/*.spec.js",
-    "test-player": "mocha lib/player/*.spec.js",
+    "test-ui-adapters": "mocha lib/ui/*.spec.js",
+    "test-player-adapters": "mocha lib/player/*.spec.js",
     "test-domain": "mocha lib/radio.spec.js",
     "acceptance": "cucumber-js",
     "acceptance-slow": "player_type=mpc_player ui_type=gpio_ui cucumber-js",
