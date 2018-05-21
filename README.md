@@ -12,4 +12,4 @@ Now it turns out the code for this radio is quite interesting, if we use it as a
 
 We have a [training workbook](https://docs.google.com/document/d/1JbmuuHuktgHBQFnDzmxEVkCqI4PEZYJaNfPBPc6QM8Q/edit?usp=sharing) that we use for running a workshop with this code and a room full of Raspberry Pis. [contact us](mailto:sales@cucumber.io) if you'd like us to run a workshop at your company.
 
-(c) Cucumber Limited
+© Cucumber Limited
