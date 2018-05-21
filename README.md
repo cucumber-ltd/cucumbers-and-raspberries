@@ -59,3 +59,5 @@ Then each of the adapters is tested through a contract. You can run all the cont
 `yarn mocha lib/**/*.spec.js`
 
 You'll notice that some of these tests involve manual intervention. Why is that?
+
+(c) Cucumber Limited
